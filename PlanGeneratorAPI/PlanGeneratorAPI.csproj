@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PlanGeneratorDto\PlanGeneratorDto.csproj" />
+    <ProjectReference Include="..\PlanGeneratorRepository\PlanGeneratorRepository.csproj" />
+  </ItemGroup>
+
+</Project>

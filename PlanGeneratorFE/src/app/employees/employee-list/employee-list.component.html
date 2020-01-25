@@ -1,0 +1,57 @@
+<div class='card'>
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-1">
+        Filter by:
+      </div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="listFilter" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>{{listFilter}}</h4>
+      </div>
+    </div>
+    <div class="table-responsive tboard">
+      <table class="table" *ngIf="employees && employees.length">
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-primary" (click)="toggleImage()">
+                {{showImage ? 'Hide' : 'Show'}} Image
+              </button>
+            </th>
+            <th>Id</th>
+            <th>Employee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of filterdEmployees">
+            <td>
+              <!-- <img *ngIf="showImage"
+                    [src]="employee.imageUrl"
+                    [style.width.px]="imageWidth"
+                    [style.margin.px]="imageMargin"> -->
+            </td>
+            <td>{{ employee.id}}</td>
+            <td>{{ employee.name}}</td>
+            <td [routerLink]="['/employeeDetails', employee.id]">
+              <button class="btn btn-primary">
+                Edit
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-primary">
+                Delete/TBD
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
