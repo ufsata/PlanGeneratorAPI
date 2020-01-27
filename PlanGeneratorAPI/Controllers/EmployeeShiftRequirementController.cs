@@ -44,7 +44,7 @@ namespace PlanGeneratorAPI.Controllers
             return CreatedAtAction("GetShiftRequirementsById", new { id = empShiftRequirement.Id }, empShiftRequirement);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}")] 
         public async Task<ActionResult<EmpShiftRequiremetsDto>> UpdateShiftRequirement([FromBody]EmpShiftRequiremetsDto empShiftRequirement)
         {
             try

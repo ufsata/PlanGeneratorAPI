@@ -24,8 +24,7 @@ namespace PlanGeneratorRepository.Implementations
         {
             return await _context.Employees.Select(e => new EmployeeDto { 
                 Id = e.Id,
-                Name = e.EmployeeName,
-                Type = e.Type
+                Name = e.EmployeeName
             }).ToListAsync();
         }
 
@@ -37,8 +36,7 @@ namespace PlanGeneratorRepository.Implementations
             return new EmployeeDto
             {
                 Id = employee.Id,
-                Name = employee.EmployeeName,
-                Type = employee.Type
+                Name = employee.EmployeeName
             };
         }
 
@@ -47,8 +45,7 @@ namespace PlanGeneratorRepository.Implementations
             var newEmployee = new Employee
             {
                 Id = employee.Id,
-                EmployeeName = employee.Name,
-                Type = employee.Type
+                EmployeeName = employee.Name
             };
 
             _context.Employees.Add(newEmployee);
@@ -62,8 +59,7 @@ namespace PlanGeneratorRepository.Implementations
             var employeeForUpdate = new Employee
             {
                 Id = employee.Id,
-                EmployeeName = employee.Name,
-                Type = employee.Type
+                EmployeeName = employee.Name
             };
 
             _context.Employees.Update(employeeForUpdate);

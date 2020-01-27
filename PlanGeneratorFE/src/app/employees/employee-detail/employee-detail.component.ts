@@ -1,4 +1,3 @@
-import { IEmployeeAbsenceDate } from './../employeeAbsenceDate';
 import { IEmployee } from "./../employee";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -11,7 +10,6 @@ import { EmployeeService } from "../employee.service";
 export class EmployeeDetailComponent implements OnInit {
   pageTitle: string = "Employee Details";
   employee: IEmployee;
-  employeeAbsenceDates: IEmployeeAbsenceDate[] = [];
   errorMessage: string;
 
   constructor(
@@ -24,9 +22,7 @@ export class EmployeeDetailComponent implements OnInit {
     const param = +this.route.snapshot.paramMap.get("id");
     if (param) {
         const id = +param;
-        this.getEmployee(id);
-        this.getEmployeeAbsenceDates(id);
-        
+        this.getEmployee(id);        
     }    
   }
 
@@ -35,16 +31,6 @@ export class EmployeeDetailComponent implements OnInit {
       next: employee => (this.employee = employee),
       error: err => (this.errorMessage = err)
     });
-  }
-
-  getEmployeeAbsenceDates(id: number){
-      this.employeeService.getAbsenceDatesById(id).subscribe({
-          next: absDates => {
-            this.employeeAbsenceDates = absDates;
-          },
-          error: err => (this.errorMessage = err)
-      });
-      console.log(this.employeeAbsenceDates);
   }
 
   onBack(): void {

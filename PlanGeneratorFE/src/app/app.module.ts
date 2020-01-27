@@ -11,13 +11,17 @@ import { EmployeeListComponent } from "./employees/employee-list/employee-list.c
 import { from } from "rxjs";
 import { EmployeeDetailComponent } from "./employees/employee-detail/employee-detail.component";
 import { LoginComponent } from "./home/login/login.component";
+import { EmployeeShiftRequiremtnsComponent } from './employees/employee-detail/employee-shift-requiremtns/employee-shift-requiremtns.component';
+import { EmployeeAbsenceDatesComponent } from './employees/employee-detail/employee-absence-dates/employee-absence-dates.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
     EmployeeDetailComponent,
-    LoginComponent
+    LoginComponent,
+    EmployeeShiftRequiremtnsComponent,
+    EmployeeAbsenceDatesComponent
   ],
   imports: [
     BrowserModule,

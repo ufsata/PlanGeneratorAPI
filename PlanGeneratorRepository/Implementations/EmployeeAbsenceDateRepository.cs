@@ -27,7 +27,8 @@ namespace PlanGeneratorRepository.Implementations
                 Id = empAbsDate.Id,
                 StartDate = empAbsDate.StartDate,
                 EndDate = empAbsDate.EndDate,
-                EmployeeId = empAbsDate.EmpId
+                EmployeeId = empAbsDate.EmpId,
+                Type = empAbsDate.Type
             };
 
             _context.EmployeeAbsenceDates.Add(newAbsenceDate);
@@ -54,7 +55,8 @@ namespace PlanGeneratorRepository.Implementations
                 Id = e.Id,
                 StartDate = e.StartDate,
                 EndDate = e.EndDate,
-                EmpId = e.EmployeeId
+                EmpId = e.EmployeeId,
+                Type = e.Type
             }).ToListAsync();
         }
 
@@ -65,7 +67,8 @@ namespace PlanGeneratorRepository.Implementations
                 Id = e.Id,
                 StartDate = e.StartDate,
                 EndDate = e.EndDate,
-                EmpId = e.EmployeeId
+                EmpId = e.EmployeeId,
+                Type = e.Type
             }).ToListAsync();
         }
         
@@ -76,7 +79,8 @@ namespace PlanGeneratorRepository.Implementations
                 Id = empAbsDate.Id,
                 StartDate = empAbsDate.StartDate,
                 EndDate = empAbsDate.EndDate,
-                EmployeeId = empAbsDate.EmpId
+                EmployeeId = empAbsDate.EmpId,
+                Type = empAbsDate.Type
             };
 
             _context.EmployeeAbsenceDates.Update(absenceDateForUpdate);

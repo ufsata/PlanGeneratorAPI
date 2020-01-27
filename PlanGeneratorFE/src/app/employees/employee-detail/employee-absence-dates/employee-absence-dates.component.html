@@ -1,0 +1,14 @@
+<thead>
+    <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let absDate of employeeAbsenceDates">
+      <td>{{absDate.startDate}}</td>
+      <td>{{absDate.endDate}}</td>
+      <td>{{absDate.type}}</td>
+    </tr>                  
+  </tbody>
