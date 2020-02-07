@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,11 @@ namespace PlanGeneratorAPI
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("PlanGeneratorContext");
+            //services.AddAuthentication("CookieAuth")
+            //    .AddCookie("CookieAuth", config => {
+            //        config.Cookie.Name = "Auth.Cookie";
+            //        config.LoginPath = "/login";
+            //    });
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
@@ -42,6 +48,10 @@ namespace PlanGeneratorAPI
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeAbsenceDateRepository, EmployeeAbsenceDateRepository>();
             services.AddScoped<IEmployeeShiftRequirementRepository, EmployeeShiftRequirementRepository>();
+            services.AddScoped<IWorkPlanGeneratorRepository, WorkPlanGeneratorRepository>();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<PlanGeneratorContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,14 +71,15 @@ namespace PlanGeneratorAPI
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
             app.UseMvc();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

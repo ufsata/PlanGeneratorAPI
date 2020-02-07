@@ -1,6 +1,6 @@
 import { IEmployeeShiftRequirement } from './../../employeeShiftRequirement';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../employee.service';
 
 @Component({

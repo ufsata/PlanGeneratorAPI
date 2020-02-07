@@ -15,6 +15,7 @@ export class EmployeeService {
     "http://localhost:51828/api/EmployeesAbsenceDates";
   private employeeShiftRequrementsUrl =
     "http://localhost:51828/api/EmployeeShiftRequirement";
+    private loginUrl = "http://localhost:51828/api/login";
 
   constructor(private http: HttpClient) {}
 

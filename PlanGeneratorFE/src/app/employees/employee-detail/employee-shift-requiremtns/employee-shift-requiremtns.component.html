@@ -9,13 +9,14 @@
       <th>Third Shift ED</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody>   
     <tr *ngFor="let shiftRequirement of employeeShiftRequiremtns">
-        <td>{{shiftRequirement.firstShiftStartDate}}</td>
-        <td>{{shiftRequirement.firstShiftEndDate}}</td>
-        <td>{{shiftRequirement.secondShiftStartDate}}</td>
-        <td>{{shiftRequirement.secondShiftEndDate}}</td>
-        <td>{{shiftRequirement.thirdShiftStartDate}}</td>
-        <td>{{shiftRequirement.thirdShiftEndDate}}</td>
+        <td>{{shiftRequirement.firstShiftStartDate | date: 'yyyy-mm-dd'}}</td>
+        <td>{{shiftRequirement.firstShiftEndDate | date: 'yyyy-mm-dd'}}</td>
+        <td>{{shiftRequirement.secondShiftStartDate | date: 'yyyy-mm-dd'}}</td>
+        <td>{{shiftRequirement.secondShiftEndDate | date: 'yyyy-mm-dd'}}</td>
+        <td>{{shiftRequirement.thirdShiftStartDate | date: 'yyyy-mm-dd'}}</td>
+        <td>{{shiftRequirement.thirdShiftEndDate | date: 'yyyy-mm-dd'}}</td>
       </tr>
+      
   </tbody>

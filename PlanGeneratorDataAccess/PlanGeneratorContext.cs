@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PlanGeneratorDataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,8 @@ using System.Text;
 
 namespace PlanGeneratorDataAccess
 {
-    public class PlanGeneratorContext : DbContext
+    //Contains all the user tables
+    public class PlanGeneratorContext : IdentityDbContext
     {
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeAbsenceDate> EmployeeAbsenceDates { get; set; }

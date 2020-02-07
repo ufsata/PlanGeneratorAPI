@@ -1,35 +1,30 @@
 <div class="card">
-        <div class="card-header">
-          {{pageTitle}}
-        </div>
-        <div class="card-body">
-          <div class="container-fluid">
-            <div class="text-center">
-                    <div class="wrapper fadeInDown">
-                            <div id="formContent">
-                              <!-- Tabs Titles -->
-
-                              <!-- Login Form -->
-                              <form>
-                                <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-                                <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-                                <input type="submit" class="fadeIn fourth"  [routerLink]="['/employees']" value="Log In">
-                                <li>Not implemented. Click "Log In" to continue.</li>
-                              </form>
-                          
-                              <!-- Remind Passowrd -->
-                              <div id="formFooter">
-                                <a class="underlineHover" href="#">Forgot Password?</a>
-                              </div>
-                          
-                            </div>
-                          </div>
-            </div>
-      
-            <div class="text-center">Developed by:</div>
-            <div class="text-center">
-              <h3>Nikola Popov</h3>
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="text-center">
+        <div class="wrapper fadeInDown">
+          <div id="formContent">
+            <!-- Login Form -->
+            <form>
+              <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+              <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+              <input type="submit" class="fadeIn fourth" [routerLink]="['/employees']" value="Log In">
+              <li>Not implemented. Click "Log In" to continue.</li>
+            </form>
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+              <a class="underlineHover" href="#">Forgot Password?</a>
             </div>
           </div>
         </div>
       </div>
+      <div class="text-center">Developed by:</div>
+      <div class="text-center">
+        <h3>Nikola Popov</h3>
+      </div>
+    </div>
+  </div>
+</div>

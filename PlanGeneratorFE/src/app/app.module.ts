@@ -4,6 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -13,6 +14,7 @@ import { EmployeeDetailComponent } from "./employees/employee-detail/employee-de
 import { LoginComponent } from "./home/login/login.component";
 import { EmployeeShiftRequiremtnsComponent } from './employees/employee-detail/employee-shift-requiremtns/employee-shift-requiremtns.component';
 import { EmployeeAbsenceDatesComponent } from './employees/employee-detail/employee-absence-dates/employee-absence-dates.component';
+import { DatePickerComponent } from './shared/date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,13 @@ import { EmployeeAbsenceDatesComponent } from './employees/employee-detail/emplo
     EmployeeDetailComponent,
     LoginComponent,
     EmployeeShiftRequiremtnsComponent,
-    EmployeeAbsenceDatesComponent
+    EmployeeAbsenceDatesComponent,
+    DatePickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
