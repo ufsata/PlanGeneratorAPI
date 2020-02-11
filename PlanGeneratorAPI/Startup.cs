@@ -49,7 +49,15 @@ namespace PlanGeneratorAPI
             services.AddScoped<IEmployeeAbsenceDateRepository, EmployeeAbsenceDateRepository>();
             services.AddScoped<IEmployeeShiftRequirementRepository, EmployeeShiftRequirementRepository>();
             services.AddScoped<IWorkPlanGeneratorRepository, WorkPlanGeneratorRepository>();
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddIdentity<IdentityUser, IdentityRole>(x=>
+            {
+                x.Password.RequireDigit = false;
+                x.Password.RequireLowercase = false;
+                x.Password.RequireNonAlphanumeric = false;
+                x.Password.RequireUppercase = false;
+
+            })
                 .AddEntityFrameworkStores<PlanGeneratorContext>()
                 .AddDefaultTokenProviders();
         }
