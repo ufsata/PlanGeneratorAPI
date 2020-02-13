@@ -3,8 +3,6 @@ using PlanGeneratorDataAccess;
 using PlanGeneratorDto.Login;
 using PlanGeneratorRepository.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PlanGeneratorRepository.Implementations
@@ -52,7 +50,7 @@ namespace PlanGeneratorRepository.Implementations
             if (userToLogin != null)
             {
                 //sign in
-                var signInResult = await _signInManager.PasswordSignInAsync(newUser, user.Password, false, false);
+                var signInResult = await _signInManager.PasswordSignInAsync(user.Username, user.Password, false, false);
 
                 if (signInResult.Succeeded)
                 {

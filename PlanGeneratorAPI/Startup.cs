@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,11 +28,7 @@ namespace PlanGeneratorAPI
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("PlanGeneratorContext");
-            //services.AddAuthentication("CookieAuth")
-            //    .AddCookie("CookieAuth", config => {
-            //        config.Cookie.Name = "Auth.Cookie";
-            //        config.LoginPath = "/login";
-            //    });
+
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
@@ -60,6 +57,18 @@ namespace PlanGeneratorAPI
             })
                 .AddEntityFrameworkStores<PlanGeneratorContext>()
                 .AddDefaultTokenProviders();
+            services.ConfigureApplicationCookie(option =>
+            {
+                option.Cookie.Name = "Identity.Cookie";
+                option.LoginPath = "/login";
+            });
+            services.AddAuthorization(option =>
+            {
+                var defaultAuthBuilder = new AuthorizationPolicyBuilder();
+                var defaultAuthPolicy = defaultAuthBuilder.RequireAuthenticatedUser().Build();
+
+                option.DefaultPolicy = defaultAuthPolicy;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

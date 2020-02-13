@@ -4,7 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -12,9 +12,9 @@ import { EmployeeListComponent } from "./employees/employee-list/employee-list.c
 import { from } from "rxjs";
 import { EmployeeDetailComponent } from "./employees/employee-detail/employee-detail.component";
 import { LoginComponent } from "./home/login/login.component";
-import { EmployeeShiftRequiremtnsComponent } from './employees/employee-detail/employee-shift-requiremtns/employee-shift-requiremtns.component';
-import { EmployeeAbsenceDatesComponent } from './employees/employee-detail/employee-absence-dates/employee-absence-dates.component';
-import { DatePickerComponent } from './shared/date-picker/date-picker.component';
+import { EmployeeShiftRequiremtnsComponent } from "./employees/employee-detail/employee-shift-requiremtns/employee-shift-requiremtns.component";
+import { EmployeeAbsenceDatesComponent } from "./employees/employee-detail/employee-absence-dates/employee-absence-dates.component";
+import { DatePickerComponent } from "./shared/date-picker/date-picker.component";
 
 @NgModule({
   declarations: [
@@ -31,18 +31,7 @@ import { DatePickerComponent } from './shared/date-picker/date-picker.component'
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      { path: "employees", component: EmployeeListComponent },
-      {
-        path: "employeeDetails/:id",
-        canActivate: [EmployeeDetailGuard],
-        component: EmployeeDetailComponent
-      },
-      { path: "login", component: LoginComponent },
-      { path: "", redirectTo: "login", pathMatch: "full" },
-      { path: "**", redirectTo: "login", pathMatch: "full" }
-    ])
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

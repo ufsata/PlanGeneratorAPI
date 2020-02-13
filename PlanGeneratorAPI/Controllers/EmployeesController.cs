@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PlanGeneratorDto.Employee;
 using PlanGeneratorRepository.Contracts;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace PlanGeneratorAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class EmployeesController : Controller
     {
