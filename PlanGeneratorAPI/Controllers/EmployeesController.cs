@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PlanGeneratorDto.Employee;
 using PlanGeneratorRepository.Contracts;
@@ -14,16 +15,18 @@ namespace PlanGeneratorAPI.Controllers
     public class EmployeesController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
-
-        public EmployeesController( IEmployeeRepository employeeRepository)
+        private readonly UserManager<IdentityUser> _userMng;
+        
+        public EmployeesController( IEmployeeRepository employeeRepository, UserManager<IdentityUser> userMng)
         {
             _employeeRepository = employeeRepository;
+            _userMng = userMng;
         }
 
         [HttpGet]
         public async Task<ICollection<EmployeeDto>> GetEmployeesShort()
         {
-            var listOfEmployeesShort = await _employeeRepository.GetListOfEmployeesShort();
+            var listOfEmployeesShort = await _employeeRepository.GetListOfEmployeesShort(_userMng.GetUserId(User));
 
             return listOfEmployeesShort;
         }
@@ -31,7 +34,7 @@ namespace PlanGeneratorAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<EmployeeDto>> GetEmployeebyId(int id)
         {
-            var employeeToReturn = await _employeeRepository.GetEmployeeById(id);
+            var employeeToReturn = await _employeeRepository.GetEmployeeById(id, _userMng.GetUserId(User));
 
             if (employeeToReturn == null)
             {
@@ -44,7 +47,7 @@ namespace PlanGeneratorAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<EmployeeDto>> PostEmployee([FromBody]EmployeeDto employee)
         {
-            await _employeeRepository.AddEmployee(employee);
+            await _employeeRepository.AddEmployee(employee, _userMng.GetUserId(User));
 
             return CreatedAtAction("GetEmployeebyId", new { id = employee.Id }, employee);
         }
@@ -54,7 +57,7 @@ namespace PlanGeneratorAPI.Controllers
         {
             try
             {
-                await _employeeRepository.UpdateEmployee(employee);
+                await _employeeRepository.UpdateEmployee(employee, _userMng.GetUserId(User));
                 return NoContent();
             }
             catch
@@ -66,14 +69,14 @@ namespace PlanGeneratorAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<EmployeeDto>> DeleteEmployeebyId(int id)
         {
-            var employeeToReturn = await _employeeRepository.DeleteEmployee(id);
+            var employeeToReturn = await _employeeRepository.DeleteEmployee(id, _userMng.GetUserId(User));
 
             if (employeeToReturn == null)
             {
                 return NotFound();
             }
 
-            return Ok(employeeToReturn);
+            return Ok();
         }
     }
 }

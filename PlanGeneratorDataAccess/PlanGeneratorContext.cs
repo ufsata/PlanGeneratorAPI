@@ -13,6 +13,8 @@ namespace PlanGeneratorDataAccess
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeAbsenceDate> EmployeeAbsenceDates { get; set; }
         public DbSet<EmployeeShiftRequirement> EmployeeShiftRequrements { get; set; }
+        //public DbSet<UserInfo> UsersInfo { get; set; }
+
 
         public PlanGeneratorContext()
         {

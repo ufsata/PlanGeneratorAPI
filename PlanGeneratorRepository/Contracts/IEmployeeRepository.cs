@@ -9,10 +9,10 @@ namespace PlanGeneratorRepository.Contracts
 {
     public interface IEmployeeRepository
     {
-        Task<List<EmployeeDto>> GetListOfEmployeesShort();
-        Task<EmployeeDto> GetEmployeeById(int id);
-        Task<Employee> AddEmployee(EmployeeDto employee);
-        Task<Employee> UpdateEmployee(EmployeeDto employee);
-        Task<Employee> DeleteEmployee(int id);
+        Task<List<EmployeeDto>> GetListOfEmployeesShort(string userId);
+        Task<EmployeeDto> GetEmployeeById(int id, string userId);
+        Task<Employee> AddEmployee(EmployeeDto employee, string userId);
+        Task<Employee> UpdateEmployee(EmployeeDto employee, string userId);
+        Task<Employee> DeleteEmployee(int id, string userId);
     }
 }

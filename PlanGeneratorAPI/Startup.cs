@@ -60,7 +60,7 @@ namespace PlanGeneratorAPI
             services.ConfigureApplicationCookie(option =>
             {
                 option.Cookie.Name = "Identity.Cookie";
-                option.LoginPath = "/login";
+                //option.LoginPath = "/login";
             });
             services.AddAuthorization(option =>
             {

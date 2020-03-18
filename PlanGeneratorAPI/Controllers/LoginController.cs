@@ -11,16 +11,16 @@ using System.Threading.Tasks;
 
 namespace PlanGeneratorAPI.Controllers
 {
-    [Route("api/user")]
+    [Route("api/auth")]
     public class LoginController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        //private readonly UserManager<IdentityUser> _userManager;
         private readonly ILoginRepository _loginRepository;
         private readonly ILogger<LoginController> _logger;
 
-        public LoginController(UserManager<IdentityUser> userManager, ILoginRepository loginRepository, ILogger<LoginController> logger)
+        public LoginController(ILoginRepository loginRepository, ILogger<LoginController> logger)
         {
-            _userManager = userManager;
+            //_userManager = userManager;
             _loginRepository = loginRepository;
             _logger = logger;
         }

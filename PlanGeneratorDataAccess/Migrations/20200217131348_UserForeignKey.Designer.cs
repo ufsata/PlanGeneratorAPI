@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlanGeneratorDataAccess;
 
 namespace PlanGeneratorDataAccess.Migrations
 {
     [DbContext(typeof(PlanGeneratorContext))]
-    partial class PlanGeneratorContextModelSnapshot : ModelSnapshot
+    [Migration("20200217131348_UserForeignKey")]
+    partial class UserForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,9 +228,11 @@ namespace PlanGeneratorDataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Employees");
                 });
@@ -343,6 +347,13 @@ namespace PlanGeneratorDataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PlanGeneratorDataAccess.Entities.Employee", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("PlanGeneratorDataAccess.Entities.EmployeeAbsenceDate", b =>
